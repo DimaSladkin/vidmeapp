@@ -3,13 +3,14 @@ package com.sladkin.vidmeapp.presentation.di
 import android.content.Context
 import com.sladkin.vidmeapp.domain.base.ObserveOn
 import com.sladkin.vidmeapp.domain.base.SubscribeOn
+import dagger.Module
 import dagger.Provides
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Singleton
 
-
+@Module
 class AppModule(private val context: Context) {
 
     @Provides

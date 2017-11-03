@@ -35,8 +35,9 @@ class FeedFragment: Fragment() {
     }
 
     fun setUpRecycler() {
-        val adapter = VideoRecyclerAdapter(context, listOf(VideoModel("pervaya xuina", 120),
-                VideoModel("vtoraya xuina", 250), VideoModel("tretya xuina", 50)))
+        val adapter = VideoRecyclerAdapter(context, listOf(VideoModel("first", 120),
+                VideoModel("sec", 250), VideoModel("third", 50)))
+
 
         feedRv.adapter = adapter
         feedRv.layoutManager = LinearLayoutManager(context)

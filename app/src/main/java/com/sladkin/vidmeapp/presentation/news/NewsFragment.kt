@@ -11,10 +11,15 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import com.sladkin.vidmeapp.R
 import com.sladkin.vidmeapp.data.entities.VideoModel
+import com.sladkin.vidmeapp.presentation.MainActivity
 import com.sladkin.vidmeapp.presentation.adapter.VideoRecyclerAdapter
+import javax.inject.Inject
 
 
-class NewsFragment: Fragment() {
+class NewsFragment: Fragment(), NewsPresenter.NewsView {
+
+    @Inject
+    lateinit var newsPresenter: NewsPresenter<NewsPresenter.NewsView>
 
     @BindView(R.id.news_rv)
     lateinit var newsRv: RecyclerView
@@ -26,6 +31,7 @@ class NewsFragment: Fragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initDagger()
 
         if (view != null) {
             ButterKnife.bind(this, view)
@@ -34,11 +40,16 @@ class NewsFragment: Fragment() {
     }
 
     fun setUpRecycler() {
-        val adapter = VideoRecyclerAdapter(context, listOf(VideoModel("pervaya xuina", 120),
-                VideoModel("vtoraya xuina", 250), VideoModel("tretya xuina", 50)))
+        val adapter = VideoRecyclerAdapter(context, listOf(VideoModel("first", 120),
+                VideoModel("sec", 250), VideoModel("third", 50)))
 
         newsRv.adapter = adapter
         newsRv.layoutManager = LinearLayoutManager(context)
+    }
+
+    fun initDagger() {
+        (activity as MainActivity).newsComponent?.inject(this)
+        newsPresenter.setView(this)
     }
 
 }

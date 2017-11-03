@@ -9,12 +9,16 @@ import android.support.v7.widget.Toolbar
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.sladkin.vidmeapp.R
+import com.sladkin.vidmeapp.VidmeApp
 import com.sladkin.vidmeapp.presentation.adapter.ViewPagerAdapter
 import com.sladkin.vidmeapp.presentation.featured.FeaturedFragment
 import com.sladkin.vidmeapp.presentation.feed.FeedFragment
 import com.sladkin.vidmeapp.presentation.news.NewsFragment
+import com.sladkin.vidmeapp.presentation.news.di.NewsModule
 
 class MainActivity: AppCompatActivity() {
+
+    val newsComponent by lazy { VidmeApp.appComponent?.provideNewsComponent(NewsModule()) }
 
     @BindView(R.id.tabs)
     lateinit var tabs: TabLayout
