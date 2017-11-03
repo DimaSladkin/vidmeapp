@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">vidmeapp</string>
+
+    <string name="likes">likes</string>
+    <string name="feed_tab">Feed</string>
+    <string name="featured_tab">Featured</string>
+    <string name="news_tab">New</string>
+
+    <string name="username">Username</string>
+    <string name="pass">Password</string>
+    <string name="login">Login</string>
 </resources>
