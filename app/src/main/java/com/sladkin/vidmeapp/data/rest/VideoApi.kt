@@ -1,6 +1,7 @@
 package com.sladkin.vidmeapp.data.rest
 
 import com.sladkin.vidmeapp.data.rest.model.NewVideoResponse
+import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -11,5 +12,5 @@ import retrofit2.http.Query
 interface VideoApi{
 
     @GET("/videos/new")
-    fun getNewVideous(): NewVideoResponse
+    fun getNewVideos(@Query("accesstoken") token: String): Single<NewVideoResponse>
 }

@@ -11,6 +11,7 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import com.sladkin.vidmeapp.R
 import com.sladkin.vidmeapp.data.entities.VideoModel
+import com.sladkin.vidmeapp.data.rest.model.NewVideoResponse
 import com.sladkin.vidmeapp.presentation.MainActivity
 import com.sladkin.vidmeapp.presentation.adapter.VideoRecyclerAdapter
 import javax.inject.Inject
@@ -37,6 +38,14 @@ class NewsFragment: Fragment(), NewsPresenter.NewsView {
             ButterKnife.bind(this, view)
             setUpRecycler()
         }
+    }
+
+    override fun onVideosLoaded(newVideoResponse: NewVideoResponse) {
+        addItemsToRecycler(newVideoResponse)
+    }
+
+    fun addItemsToRecycler(newVideoResponse: NewVideoResponse) {
+
     }
 
     fun setUpRecycler() {
