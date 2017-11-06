@@ -12,5 +12,6 @@ import retrofit2.http.Query
 interface VideoApi{
 
     @GET("/videos/new")
-    fun getNewVideos(@Query("accesstoken") token: String): Single<NewVideoResponse>
+    fun getNewVideos(@Query("accesstoken") token: String,
+                     @Query("limit") limit: Int): Single<NewVideoResponse>
 }

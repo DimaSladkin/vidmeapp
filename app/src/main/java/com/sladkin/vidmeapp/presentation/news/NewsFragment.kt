@@ -14,16 +14,23 @@ import com.sladkin.vidmeapp.data.entities.VideoModel
 import com.sladkin.vidmeapp.data.rest.model.NewVideoResponse
 import com.sladkin.vidmeapp.presentation.MainActivity
 import com.sladkin.vidmeapp.presentation.adapter.VideoRecyclerAdapter
+import com.sladkin.vidmeapp.presentation.adapter.VideoViewHolder
 import javax.inject.Inject
+import android.support.v7.widget.DividerItemDecoration
 
 
-class NewsFragment: Fragment(), NewsPresenter.NewsView {
+
+
+class NewsFragment: Fragment(), NewsPresenter.NewsView{
 
     @Inject
     lateinit var newsPresenter: NewsPresenter<NewsPresenter.NewsView>
 
     @BindView(R.id.news_rv)
     lateinit var newsRv: RecyclerView
+
+    var videoList: ArrayList<VideoModel> = ArrayList()
+    var adapter: RecyclerView.Adapter<VideoViewHolder>? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater?.inflate(R.layout.news_fragment, container, false)
@@ -38,22 +45,29 @@ class NewsFragment: Fragment(), NewsPresenter.NewsView {
             ButterKnife.bind(this, view)
             setUpRecycler()
         }
+
+        newsPresenter.requestNewVideos()
     }
 
-    override fun onVideosLoaded(newVideoResponse: NewVideoResponse) {
-        addItemsToRecycler(newVideoResponse)
+    override fun onVideosLoaded(videoList: List<VideoModel>) {
+        addItemsToRecycler(videoList)
     }
 
-    fun addItemsToRecycler(newVideoResponse: NewVideoResponse) {
-
+    fun addItemsToRecycler(list: List<VideoModel>) {
+        videoList.addAll(list)
+        adapter?.notifyDataSetChanged()
     }
 
     fun setUpRecycler() {
-        val adapter = VideoRecyclerAdapter(context, listOf(VideoModel("first", 120),
-                VideoModel("sec", 250), VideoModel("third", 50)))
+        adapter = VideoRecyclerAdapter(context, videoList)
+        val layoutManager = LinearLayoutManager(context)
+
+        val dividerItemDecoration = DividerItemDecoration(newsRv.context,
+                layoutManager.orientation)
+        newsRv.addItemDecoration(dividerItemDecoration)
 
         newsRv.adapter = adapter
-        newsRv.layoutManager = LinearLayoutManager(context)
+        newsRv.layoutManager = layoutManager
     }
 
     fun initDagger() {

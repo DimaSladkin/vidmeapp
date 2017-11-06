@@ -2,6 +2,7 @@ package com.sladkin.vidmeapp.data.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.sladkin.vidmeapp.data.rest.VideoApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -16,13 +17,13 @@ class NetworkingModule {
 
     @Singleton
     @Provides
-    fun provideOkHttpClient() = OkHttpClient.Builder()
+    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
             .readTimeout(10, TimeUnit.SECONDS)
             .build()
 
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson) =
+    fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit =
             Retrofit.Builder()
                     .baseUrl("https://api.vid.me")
                     .client(okHttpClient)
@@ -32,7 +33,11 @@ class NetworkingModule {
 
     @Singleton
     @Provides
-    fun provideGson() = GsonBuilder()
+    fun provideGson(): Gson = GsonBuilder()
                 .setLenient()
                 .create()
+
+    @Singleton
+    @Provides
+    fun provideVideoApi(retrofit: Retrofit): VideoApi = retrofit.create(VideoApi::class.java)
 }

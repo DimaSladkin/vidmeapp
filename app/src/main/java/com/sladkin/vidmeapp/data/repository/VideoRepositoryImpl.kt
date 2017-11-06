@@ -1,5 +1,7 @@
 package com.sladkin.vidmeapp.data.repository
 
+import com.sladkin.vidmeapp.data.entities.VideoModel
+import com.sladkin.vidmeapp.data.mapers.VideosMapper
 import com.sladkin.vidmeapp.data.rest.VideoApi
 import com.sladkin.vidmeapp.data.rest.model.NewVideoResponse
 import io.reactivex.Single
@@ -7,9 +9,15 @@ import io.reactivex.Single
 /**
  * Created by dima on 03.11.2017.
  */
-class VideoRepositoryImpl(private val videoApi: VideoApi): VideoRepository {
+class VideoRepositoryImpl(private val videoApi: VideoApi,
+                          private val videosMapper: VideosMapper): VideoRepository {
 
-    override fun getNewVideos(): Single<NewVideoResponse> {
-        return videoApi.getNewVideos()
+    companion object {
+
+        val ACCESS_TOKEN = "EvDOHVaSrdznhcmh1APT7pdogwa41dIe"
+    }
+
+    override fun getNewVideos(): Single<List<VideoModel>> {
+        return videoApi.getNewVideos(ACCESS_TOKEN, 10).map{ videosMapper.map(it) }
     }
 }

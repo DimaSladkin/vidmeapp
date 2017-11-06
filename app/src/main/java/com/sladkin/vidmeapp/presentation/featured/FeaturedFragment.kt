@@ -12,11 +12,15 @@ import butterknife.ButterKnife
 import com.sladkin.vidmeapp.R
 import com.sladkin.vidmeapp.data.entities.VideoModel
 import com.sladkin.vidmeapp.presentation.adapter.VideoRecyclerAdapter
+import com.sladkin.vidmeapp.presentation.adapter.VideoViewHolder
 
 class FeaturedFragment: Fragment() {
 
     @BindView(R.id.featured_rv)
     lateinit var featuredRv: RecyclerView
+
+    var videoList: ArrayList<VideoModel> = ArrayList()
+    var adapter: RecyclerView.Adapter<VideoViewHolder>? = null
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -35,8 +39,7 @@ class FeaturedFragment: Fragment() {
     }
 
     fun setUpRecycler() {
-        val adapter = VideoRecyclerAdapter(context, listOf(VideoModel("first", 120),
-                VideoModel("sec", 250), VideoModel("third", 50)))
+        adapter = VideoRecyclerAdapter(context, listOf())
 
         featuredRv.adapter = adapter
         featuredRv.layoutManager = LinearLayoutManager(context)

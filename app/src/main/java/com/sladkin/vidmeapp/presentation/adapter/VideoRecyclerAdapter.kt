@@ -1,8 +1,10 @@
 package com.sladkin.vidmeapp.presentation.adapter
 
+import android.app.FragmentBreadCrumbs
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.sladkin.vidmeapp.R
 import com.sladkin.vidmeapp.data.entities.VideoModel

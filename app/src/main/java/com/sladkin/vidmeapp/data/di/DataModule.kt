@@ -10,7 +10,7 @@ import javax.inject.Singleton
 /**
  * Created by dima on 03.11.2017.
  */
-@Module(includes = arrayOf(NetworkingModule::class, RepositoryModule::class))
+@Module(includes = arrayOf(NetworkingModule::class, RepositoryModule::class, MappersModule::class))
 class DataModule {
 
     @Provides

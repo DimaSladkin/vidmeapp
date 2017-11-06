@@ -15,7 +15,9 @@ class NewsModule {
 
     @Provides
     @PerActivity
-    fun provideNewsPresenter(): NewsPresenter<NewsPresenter.NewsView> = NewsPresenterImpl()
+    fun provideNewsPresenter(getNewVideoUseCase: GetNewVideoUseCase)
+            : NewsPresenter<NewsPresenter.NewsView>
+            = NewsPresenterImpl(getNewVideoUseCase)
 
     @Provides
     @PerActivity
