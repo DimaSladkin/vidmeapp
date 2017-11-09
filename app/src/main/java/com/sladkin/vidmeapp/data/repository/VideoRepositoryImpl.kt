@@ -21,8 +21,8 @@ class VideoRepositoryImpl(private val videoApi: VideoApi,
         return videoApi.getNewVideos(ACCESS_TOKEN, 10, offset).map{ videosMapper.map(it) }
     }
 
-    override fun getFeedVideos(offset: Int): Single<List<VideoModel>> {
-        return videoApi.getFeaturedVideos(ACCESS_TOKEN, 10, offset).map {
+    override fun getFeedVideos(offset: Int, userToken: String): Single<List<VideoModel>> {
+        return videoApi.getFeedVideos(userToken, 10, offset).map {
             videosMapper.map(it)
         }
     }

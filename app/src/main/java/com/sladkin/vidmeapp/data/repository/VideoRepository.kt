@@ -8,7 +8,7 @@ interface VideoRepository {
 
     fun getNewVideos(offset: Int): Single<List<VideoModel>>
 
-    fun getFeedVideos(offset: Int): Single<List<VideoModel>>
+    fun getFeedVideos(offset: Int, userToken: String): Single<List<VideoModel>>
 
     fun getFeaturedVideos(offset: Int): Single<List<VideoModel>>
 }

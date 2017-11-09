@@ -9,4 +9,6 @@
     <string name="username">Username</string>
     <string name="pass">Password</string>
     <string name="login">Login</string>
+
+    <string name="user_key">userKey</string>
 </resources>

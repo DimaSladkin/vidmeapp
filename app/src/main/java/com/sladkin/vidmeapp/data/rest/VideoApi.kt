@@ -1,8 +1,10 @@
 package com.sladkin.vidmeapp.data.rest
 
 import com.sladkin.vidmeapp.data.rest.model.NewVideoResponse
+import com.sladkin.vidmeapp.data.rest.model.auth.UserResponceModel
 import io.reactivex.Single
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 /**
@@ -26,5 +28,8 @@ interface VideoApi {
                       @Query("limit") limit: Int,
                       @Query("offset") offset: Int): Single<NewVideoResponse>
 
+    @POST("/auth/check")
+    fun getUser(@Query("username") user: String,
+                @Query("password") pass: String): Single<UserResponceModel>
 
 }
