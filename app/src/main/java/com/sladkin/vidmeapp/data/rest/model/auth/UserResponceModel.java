@@ -40,4 +40,8 @@ public class UserResponceModel {
         this.user = user;
     }
 
+    @Override
+    public String toString() {
+        return "status: " + status;
+    }
 }

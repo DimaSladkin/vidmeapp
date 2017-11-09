@@ -29,8 +29,9 @@ class FeedPresenterImpl<T : FeedPresenter.FeedView>(val getFeedVideoUseCase: Get
     override fun requstLogin(username: String, pass: String) {
         getUserUseCase.setUseCase(username, pass)
         getUserUseCase.executeSingle(
-                {view?.onLogIn()},
-                {view?.onError(it)}
+                {view?.onLogIn(it)},
+                {view?.onError(it)
+                Log.i("onxUser", it.toString())}
         )
     }
 
