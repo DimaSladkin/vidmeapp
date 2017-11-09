@@ -2,24 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:layout_weight="0.5"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <VideoView
             android:id="@+id/video_view"
-            android:visibility="invisible"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:visibility="visible"
+            android:layout_alignBottom="@id/thumb_img"
+            android:layout_alignTop="@id/thumb_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <ImageView
             android:id="@+id/thumb_img"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:visibility="visible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </RelativeLayout>
 

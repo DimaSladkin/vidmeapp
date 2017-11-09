@@ -7,8 +7,8 @@ class FeedPresenterImpl<T : FeedPresenter.FeedView>() : FeedPresenter<T> {
 
     private var view: T? = null
 
-    override fun requestVideos() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun requestVideos(offset: Int) {
+
     }
 
     override fun setView(view: T) {

@@ -7,6 +7,7 @@ import dagger.Subcomponent
 /**
  * Created by dima on 06.11.2017.
  */
+
 @PerActivity
 @Subcomponent(modules = arrayOf(FeedModule::class))
 interface FeedComponent {

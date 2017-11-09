@@ -10,7 +10,8 @@ class NewsPresenterImpl<T: NewsPresenter.NewsView>(val getNewVideoUseCase: GetNe
     : NewsPresenter<T> {
 
 
-    override fun requestNewVideos() {
+    override fun requestNewVideos(offset: Int) {
+        getNewVideoUseCase.setUseCase(offset)
         getNewVideoUseCase.executeSingle(
                 { if (view != null) view?.onVideosLoaded(it)},
                 {

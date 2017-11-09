@@ -10,7 +10,9 @@ interface FeaturedPresenter<T>: Presenter<T> {
 
     interface FeaturedView{
         fun onVideosLoaded(videos: List<VideoModel>)
+
+        fun onError(error: Throwable)
     }
 
-    fun requestVideos()
+    fun requestVideos(offset: Int)
 }

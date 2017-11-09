@@ -13,6 +13,6 @@ interface NewsPresenter<T> : Presenter<T> {
         fun onError(error: Throwable)
     }
 
-    fun requestNewVideos()
+    fun requestNewVideos(offset: Int)
 
 }

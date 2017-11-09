@@ -11,7 +11,9 @@ interface FeedPresenter<T>: Presenter<T> {
 
     interface FeedView {
         fun onVideosLoaded(list: List<VideoModel>)
+
+        fun onError(error: Throwable)
     }
 
-    fun requestVideos()
+    fun requestVideos(offset: Int)
 }

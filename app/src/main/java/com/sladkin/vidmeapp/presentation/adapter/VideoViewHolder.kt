@@ -41,7 +41,7 @@ class VideoViewHolder(itemView: View,
     fun bindViewHolder(videoModel: VideoModel) {
         videoNameTv.text = videoModel.name
         likesTv.text = videoModel.likes.toString()
-        videoView.setVideoURI(Uri.parse(videoModel.url))
+//        videoView.setVideoURI(Uri.parse(videoModel.url))
         Picasso.with(itemView.context)
                 .load(videoModel.thumbUrl)
                 .into(thumb)
