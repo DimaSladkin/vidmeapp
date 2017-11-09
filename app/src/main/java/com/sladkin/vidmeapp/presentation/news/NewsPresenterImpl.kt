@@ -13,7 +13,10 @@ class NewsPresenterImpl<T: NewsPresenter.NewsView>(val getNewVideoUseCase: GetNe
     override fun requestNewVideos() {
         getNewVideoUseCase.executeSingle(
                 { if (view != null) view?.onVideosLoaded(it)},
-                { Log.i("onxNewVideosErr", it.toString()) }
+                {
+                    if (view != null) view?.onError(it)
+                    Log.i("onxNewVideosErr", it.toString())
+                }
         )
     }
 

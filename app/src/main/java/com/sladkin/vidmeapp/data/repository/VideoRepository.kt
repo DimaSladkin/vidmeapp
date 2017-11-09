@@ -7,4 +7,8 @@ import io.reactivex.Single
 interface VideoRepository {
 
     fun getNewVideos(): Single<List<VideoModel>>
+
+    fun getFeedVideos(): Single<List<VideoModel>>
+
+    fun getFeaturedVideos(): Single<List<VideoModel>>
 }

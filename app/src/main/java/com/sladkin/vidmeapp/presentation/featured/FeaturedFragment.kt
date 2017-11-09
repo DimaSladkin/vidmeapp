@@ -16,7 +16,7 @@ import com.sladkin.vidmeapp.presentation.adapter.VideoViewHolder
 
 class FeaturedFragment: Fragment() {
 
-    @BindView(R.id.featured_rv)
+    @BindView(R.id.recycler)
     lateinit var featuredRv: RecyclerView
 
     var videoList: ArrayList<VideoModel> = ArrayList()
@@ -24,7 +24,7 @@ class FeaturedFragment: Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater?.inflate(R.layout.featured_fragment, container, false)
+        val view = inflater?.inflate(R.layout.list_fragment, container, false)
         return view
     }
 

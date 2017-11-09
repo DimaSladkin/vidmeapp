@@ -20,4 +20,12 @@ class VideoRepositoryImpl(private val videoApi: VideoApi,
     override fun getNewVideos(): Single<List<VideoModel>> {
         return videoApi.getNewVideos(ACCESS_TOKEN, 10).map{ videosMapper.map(it) }
     }
+
+    override fun getFeedVideos(): Single<List<VideoModel>> {
+        return
+    }
+
+    override fun getFeaturedVideos(): Single<List<VideoModel>> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }

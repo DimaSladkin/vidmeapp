@@ -9,6 +9,8 @@ interface NewsPresenter<T> : Presenter<T> {
 
     interface NewsView {
         fun onVideosLoaded(list: List<VideoModel>)
+
+        fun onError(error: Throwable)
     }
 
     fun requestNewVideos()

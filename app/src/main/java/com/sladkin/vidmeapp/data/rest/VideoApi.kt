@@ -14,4 +14,14 @@ interface VideoApi{
     @GET("/videos/new")
     fun getNewVideos(@Query("accesstoken") token: String,
                      @Query("limit") limit: Int): Single<NewVideoResponse>
+
+    @GET("/videos/featured")
+    fun getFeaturedVideos(@Query("accesstoken") token: String,
+                     @Query("limit") limit: Int): Single<NewVideoResponse>
+
+    @GET("/videos/feed")
+    fun getFeedVideos(@Query("accesstoken") token: String,
+                     @Query("limit") limit: Int): Single<NewVideoResponse>
+
+
 }
